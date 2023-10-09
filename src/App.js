@@ -1,14 +1,29 @@
-import Table from "./components/table";
+import { useState } from "react";
+import ModalTaliwind from "./components/modal";
+import useFetch from "./hook/useFetch";
+import FetchData from "./components/fetchComponent";
 
 const App = () => {
+  // console.log("re render")
+
+  const [isShow, setIsShow] = useState(true);
+
   return (
     <>
+    <ModalTaliwind
+    icon="err"
+    title="خطا"
+    text="ورود شما با خطا مواجه شد"
+    confirmButtonText="تایید"
+    backdrop
+    backdropClose
+    /> 
       <div dir="rtl" className="h-screen ">
-        <h1 className="bg-blue-500 text-white text-center p-2 text-lg font-bold mb-20">
-          TIC React Table
-        </h1>
+        <button onClick={() => setIsShow((isShow) => !isShow)}>
+          {isShow ? "close" : "open"}
+        </button>
 
-        <Table />
+        {isShow && <FetchData />}
       </div>
     </>
   );
