@@ -10,25 +10,24 @@ const App = () => {
 
   const [isShow, setIsShow] = useState(true);
 
-  console.log(process.env.REACT_APP_BASE_URL)
 
 
   return (
     <>
-      <ModalTaliwind
+      {/* <ModalTaliwind
         icon="err"
         title="خطا"
         text="ورود شما با خطا مواجه شد"
         confirmButtonText="تایید"
         backdrop
         // backdropClose
-      />
+      /> */}
       <div dir="rtl" className="h-screen ">
         <button onClick={() => setIsShow((isShow) => !isShow)}>
           {isShow ? "close" : "open"}
         </button>
 
-        {isShow && <FetchData />}
+        {<FetchData />}
       </div>
 
 
