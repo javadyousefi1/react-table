@@ -4,7 +4,9 @@ import useFetch from "../hook/useFetch";
 const FetchData = () => {
   const { data, isLoading, error, cancelRequest } = useFetch(
     "http://localhost:3000/users",
-    "get"
+    "post",
+    { name: "mr amozad" },
+    { pageIndex: 2 }
   );
 
   useEffect(() => {

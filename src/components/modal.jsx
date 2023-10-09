@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 function iconRender(iconType) {
   if (iconType === "succ") {
@@ -61,19 +61,12 @@ const ModalTaliwind = ({
   backdropClose,
 }) => {
   const [showModal, setShowModal] = useState(true);
+  // const submitButtonRef = useRef();
 
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyPress);
-    return () => {
-      window.removeEventListener("keydown", handleKeyPress);
-    };
-  }, []);
-
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      setShowModal(false);
-    }
-  };
+  // ? focus on button on mount for close with enter btn
+  // useEffect(() => {
+  //   submitButtonRef.current.focus();
+  // }, []);
 
   const secondryButtonHandler = () => {
     console.log("secondryButtonHandler clicked !");
@@ -92,76 +85,87 @@ const ModalTaliwind = ({
 
   return (
     <>
-      {showModal && (
-        <div
-          onClick={() => {
-            backdropCloseModalHandler();
-          }}
-          className={
-            backdrop
-              ? "bg-black fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center z-9999"
-              : " fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center z-9999"
-          }
-        >
+      <AnimatePresence>
+        {showModal && (
           <motion.div
-            initial={{ scale: 0.8, opacity: 0, y: 10 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{
               type: "spring",
-              stiffness: 120,
-              damping: 20,
             }}
-            className=" fixed left-0 right-0 flex justify-center items-center px-2 opacity-100 transition-all duration-150 ease-linear"
+            onClick={() => {
+              backdropCloseModalHandler();
+            }}
+            className={
+              backdrop
+                ? "bg-black fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center z-9999"
+                : " fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center z-9999"
+            }
           >
-            {/* warning */}
-            <div
-              onClick={(e) => handleChildClick(e)}
-              className="bg-white p-6 rounded-lg flex flex-col items-center gap-y-5 min-w-[300px] shadow-lg"
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0, y: 10 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 500,
+                damping: 50,
+              }}
+              className=" fixed left-0 right-0 flex justify-center items-center px-2 opacity-100 transition-all duration-150 ease-linear"
             >
-              {/* icon */}
-
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ rotate: 360, scale: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 10,
-                }}
+              {/* warning */}
+              <div
+                onClick={(e) => handleChildClick(e)}
+                className="bg-white p-6 rounded-lg flex flex-col items-center gap-y-5 min-w-[300px] shadow-lg"
               >
-                {iconRender(icon)}
-              </motion.div>
+                {/* icon */}
 
-              {/* sign out */}
-              <div className="flex items-center flex-col ">
-                <b className="text-2xl mb-2">{title}</b>
-
-                <p className="text-gray-400 text-md">{text}</p>
-              </div>
-
-              {/* button */}
-
-              <div className="flex justify-between gap-x-3">
-                <button
-                  onClick={() => setShowModal(false)}
-                  className="text-white px-6 py-2 bg-blue-500 rounded-lg text-sm hover:bg-opacity-80 transition-all ease-in-out duration-150"
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ rotate: 360, scale: 1 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 10,
+                  }}
                 >
-                  {confirmButtonText}
-                </button>
+                  {iconRender(icon)}
+                </motion.div>
 
-                {secondryButton && (
+                {/* sign out */}
+                <div className="flex items-center flex-col ">
+                  <b className="text-2xl mb-2">{title}</b>
+
+                  <p className="text-gray-400 text-md">{text}</p>
+                </div>
+
+                {/* button */}
+
+                <div className="flex justify-between gap-x-3">
                   <button
-                    onClick={() => secondryButtonHandler()}
-                    className="text-blue-500 px-6 py-2 border-blue-500 rounded-lg border text-sm hover:bg-gray-100 transition-all ease-in-out duration-150"
+                    // ref={submitButtonRef}
+                    autoFocus
+                    onClick={() => setShowModal(false)}
+                    className="outline-none text-white px-6 py-2 bg-blue-500 rounded-lg text-sm hover:bg-opacity-80 transition-all ease-in-out duration-150"
                   >
-                    {secondryButton}
+                    {confirmButtonText}
                   </button>
-                )}
+
+                  {secondryButton && (
+                    <button
+                      onClick={() => secondryButtonHandler()}
+                      className="text-blue-500 px-6 py-2 border-blue-500 rounded-lg border text-sm hover:bg-gray-100 transition-all ease-in-out duration-150"
+                    >
+                      {secondryButton}
+                    </button>
+                  )}
+                </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </>
   );
 };
