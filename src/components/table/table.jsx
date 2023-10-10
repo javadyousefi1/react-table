@@ -31,7 +31,16 @@ const Table = () => {
         </div>
 
         <div className="flex justify-center mt-10">
-          <Pagination dir="ltr" count={10} color="primary" size="small" />
+          <Pagination
+            dir="ltr"
+            count={10}
+            color="primary"
+            size="  "
+            defaultPage={1}
+            siblingCount={1}
+
+          />
+      
         </div>
       </div>
     </>

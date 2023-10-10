@@ -209,7 +209,7 @@ export default TableItems;
 export const RowIcons = () => {
   return (
     <div className="flex justify-between items-center">
-      <span title="تفییر رمز عبور">
+      <span className="px-2 md:px-1" title="تفییر رمز عبور">
         <svg
           className="w-4 h-4 cursor-pointer fill-blue-400"
           viewBox="0 0 512 512"
@@ -220,7 +220,7 @@ export const RowIcons = () => {
           <path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0 160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24v-40h40c13.3 0 24-10.7 24-24v-40h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zm40-176c-22.1 0-40-17.9-40-40s17.9-40 40-40 40 17.9 40 40-17.9 40-40 40z" />
         </svg>
       </span>
-      <span title="ویرایش اطلاعات">
+      <span className="px-2 md:px-1" title="ویرایش اطلاعات">
         <svg
           className="w-6 h-6 cursor-pointer fill-yellow-400"
           viewBox="0 0 24 24"
@@ -231,7 +231,7 @@ export const RowIcons = () => {
           <path d="M21.7 13.35l-1 1-2.05-2.05 1-1a.55.55 0 01.77 0l1.28 1.28c.21.21.21.56 0 .77M12 18.94l6.06-6.06 2.05 2.05L14.06 21H12v-2.06M12 14c-4.42 0-8 1.79-8 4v2h6v-1.89l4-4c-.66-.08-1.33-.11-2-.11m0-10a4 4 0 00-4 4 4 4 0 004 4 4 4 0 004-4 4 4 0 00-4-4z" />
         </svg>
       </span>
-      <span title="حذف کاربر">
+      <span className="px-2 md:px-1" title="حذف کاربر">
         <svg
           className="w-4 h-4 cursor-pointer fill-red-500"
           viewBox="0 0 448 512"

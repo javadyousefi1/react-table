@@ -8,9 +8,9 @@ const TableNavBar = () => {
         <div className="flex items-center gap-x-2">
           <input
             type="text"
-            className="focus:shadow-2xl bg-[#fff]  outline-none p-2 w-full rounded-xl border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
+            className="focus:shadow-2xl bg-[#fff] min-w-[250px]  outline-none p-2 w-full rounded-xl border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
           />
-          <div className="text-gray-400 bg-white p-2 rounded-xl border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue">
+          <div className="text-blue-500 bg-white p-2 rounded-xl border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue">
             <svg
               className="w-6 h-6"
               viewBox="0 0 1024 1024"
