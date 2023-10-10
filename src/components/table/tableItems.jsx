@@ -6,6 +6,7 @@ const TableItems = () => {
 
   return (
     <>
+    
       <tr>
         <td
           onClick={() => setIsDropDownOpen((prevState) => !prevState)}
@@ -91,108 +92,96 @@ const TableItems = () => {
           }}
           className=" py-6"
         >
-          <td className="px-4  bg-gray-100 rounded-lg relative" colSpan="4">
+          <td className="px-4  bg-gray-100 rounded-lg relative" colSpan="10">
             <div className="bg-gray-100 w-8 h-8 absolute rotate-45 top-[-7px] right-5 rounded-lg"></div>
-            <div className="p-3">
+            <div className="p-3 flex justify-between">
               <div className="m-2 flex items-center gap-x-1">
                 <span className="text-sm font-bold text-slate-800">نام کاربری</span>
                 <span className="text-blue-500">
-                  <svg
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    height="1em"
-                    width="1em"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"
-                    />
-                  </svg>
+                     <svg
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      height="1em"
+    className="relative top-[2px]"
+      width="1em"
+    >
+      <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+    </svg>
                 </span>
                 <span className="text-sm text-gray-500">0021938954</span>
               </div>
               <div className="m-2 flex items-center gap-x-1">
                 <span className="text-sm font-bold text-slate-800">جنسیت</span>
                 <span className="text-blue-500">
-                  <svg
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    height="1em"
-                    width="1em"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"
-                    />
-                  </svg>
+                     <svg
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      height="1em"
+    className="relative top-[2px]"
+      width="1em"
+    >
+      <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+    </svg>
                 </span>
                 <span className="text-sm text-gray-500">مرد</span>
               </div>
               <div className="m-2 flex items-center gap-x-1">
                 <span className="text-sm font-bold text-slate-800">نام پدر</span>
                 <span className="text-blue-500">
-                  <svg
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    height="1em"
-                    width="1em"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"
-                    />
-                  </svg>
+                     <svg
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      height="1em"
+    className="relative top-[2px]"
+      width="1em"
+    >
+      <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+    </svg>
                 </span>
                 <span className="text-sm text-gray-500">اسماعیل</span>
               </div>
               <div className="m-2 flex items-center gap-x-1">
                 <span className="text-sm font-bold text-slate-800">تاریخ تولد</span>
                 <span className="text-blue-500">
-                  <svg
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    height="1em"
-                    width="1em"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"
-                    />
-                  </svg>
+                     <svg
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      height="1em"
+    className="relative top-[2px]"
+      width="1em"
+    >
+      <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+    </svg>
                 </span>
                 <span className="text-sm text-gray-500">۱۳۷۷/۱۲/۲۶</span>
               </div>
               <div className="m-2 flex items-center gap-x-1">
                 <span className="text-sm font-bold text-slate-800">ایمیل</span>
                 <span className="text-blue-500">
-                  <svg
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    height="1em"
-                    width="1em"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"
-                    />
-                  </svg>
+                     <svg
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      height="1em"
+    className="relative top-[2px]"
+      width="1em"
+    >
+      <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+    </svg>
                 </span>
                 <span className="text-sm text-gray-500">Javad9000@gmail.com</span>
               </div>
               <div className="m-2 flex items-center gap-x-1">
                 <span className="text-sm font-bold text-slate-800">استان های دارای سمت</span>
                 <span className="text-blue-500">
-                  <svg
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    height="1em"
-                    width="1em"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"
-                    />
-                  </svg>
+                     <svg
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      height="1em"
+    className="relative top-[2px]"
+      width="1em"
+    >
+      <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+    </svg>
                 </span>
                 <span className="text-sm text-gray-500">تبریز</span>
               </div>
