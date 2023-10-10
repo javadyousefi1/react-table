@@ -9,6 +9,29 @@ const TableItems = () => {
       <tr>
         <td
           onClick={() => setIsDropDownOpen((prevState) => !prevState)}
+          className="cursor-pointer   text-center text-blue-500   whitespace-nowrap"
+        >
+          <span>
+            <svg
+              className={`w-5 h-5 transition-all ease-in-out duration-150 ${
+                isDropDownOpen && "rotate-180"
+              }`}
+              fill="none"
+              viewBox="0 0 15 15"
+              height="1em"
+              width="1em"
+            >
+              <path
+                fill="currentColor"
+                fillRule="evenodd"
+                d="M4.182 6.182a.45.45 0 01.636 0L7.5 8.864l2.682-2.682a.45.45 0 01.636.636l-3 3a.45.45 0 01-.636 0l-3-3a.45.45 0 010-.636z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </span>
+        </td>
+        <td
+          onClick={() => setIsDropDownOpen((prevState) => !prevState)}
           className="cursor-pointer   text-center text-blue-500  px-4 py-6 whitespace-nowrap"
         >
           1
@@ -68,43 +91,110 @@ const TableItems = () => {
           }}
           className=" py-6"
         >
-          <td className="px-4  bg-gray-100 rounded-lg" colSpan="9">
+          <td className="px-4  bg-gray-100 rounded-lg relative" colSpan="4">
+            <div className="bg-gray-100 w-8 h-8 absolute rotate-45 top-[-7px] right-5 rounded-lg"></div>
             <div className="p-3">
-              <div className="m-2">
-                <span className="text-sm">نام کاربری</span> :
-                <span className="text-sm">0021938954</span>
-              </div>
-              <div className="m-2">
-                <span className="text-sm">جنسیت</span> :
-                <span className="text-sm">
-                  <span data-v-5b8f0dc4="">مرد</span>
+              <div className="m-2 flex items-center gap-x-1">
+                <span className="text-sm font-bold text-slate-800">نام کاربری</span>
+                <span className="text-blue-500">
+                  <svg
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    height="1em"
+                    width="1em"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"
+                    />
+                  </svg>
                 </span>
+                <span className="text-sm text-gray-500">0021938954</span>
               </div>
-              <div className="m-2">
-                <span className="text-sm">نام پدر</span> :
-                <span className="text-sm">
-                  <span data-v-5b8f0dc4="">اسماعیل</span>
+              <div className="m-2 flex items-center gap-x-1">
+                <span className="text-sm font-bold text-slate-800">جنسیت</span>
+                <span className="text-blue-500">
+                  <svg
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    height="1em"
+                    width="1em"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"
+                    />
+                  </svg>
                 </span>
+                <span className="text-sm text-gray-500">مرد</span>
               </div>
-              <div className="m-2">
-                <span className="text-sm">تاریخ تولد</span> :
-                <span className="text-sm">
-                  <span data-v-5b8f0dc4="" dir="ltr" className="letter-spacing">
-                    ۱۳۷۷/۱۲/۲۶
-                  </span>
+              <div className="m-2 flex items-center gap-x-1">
+                <span className="text-sm font-bold text-slate-800">نام پدر</span>
+                <span className="text-blue-500">
+                  <svg
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    height="1em"
+                    width="1em"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"
+                    />
+                  </svg>
                 </span>
+                <span className="text-sm text-gray-500">اسماعیل</span>
               </div>
-              <div className="m-2">
-                <span className="text-sm">ایمیل</span> :
-                <span className="text-sm">
-                  <span data-v-5b8f0dc4="" dir="ltr" className="letter-spacing">
-                    Javad9000@gmail.com
-                  </span>
+              <div className="m-2 flex items-center gap-x-1">
+                <span className="text-sm font-bold text-slate-800">تاریخ تولد</span>
+                <span className="text-blue-500">
+                  <svg
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    height="1em"
+                    width="1em"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"
+                    />
+                  </svg>
                 </span>
+                <span className="text-sm text-gray-500">۱۳۷۷/۱۲/۲۶</span>
               </div>
-              <div className="m-2">
-                <span className="text-sm">استان&zwnj;های دارای سمت</span> :
-                <span className="text-sm">تبریز</span>
+              <div className="m-2 flex items-center gap-x-1">
+                <span className="text-sm font-bold text-slate-800">ایمیل</span>
+                <span className="text-blue-500">
+                  <svg
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    height="1em"
+                    width="1em"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"
+                    />
+                  </svg>
+                </span>
+                <span className="text-sm text-gray-500">Javad9000@gmail.com</span>
+              </div>
+              <div className="m-2 flex items-center gap-x-1">
+                <span className="text-sm font-bold text-slate-800">استان های دارای سمت</span>
+                <span className="text-blue-500">
+                  <svg
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    height="1em"
+                    width="1em"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"
+                    />
+                  </svg>
+                </span>
+                <span className="text-sm text-gray-500">تبریز</span>
               </div>
             </div>
           </td>

@@ -8,7 +8,7 @@ const RowNum = () => {
 
   return (
     <>
-      <div className="relative text-gray-400 bg-white p-2 rounded-xl border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue">
+      <div className="relative text-gray-400 bg-white p-2 rounded-xl flex justify-center items-center border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue">
         <div
           onClick={() => setShowDropDown((prevState) => !prevState)}
           className="flex items-center gap-x-1"

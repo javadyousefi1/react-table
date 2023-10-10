@@ -2,6 +2,7 @@ const TableHead = () => {
   return (
     <thead>
       <tr>
+        <th className="text-blue-500 px-4 py-2 whitespace-nowrap text-sm"></th>
         <th className="px-4 py-2">#</th>
         <th className="text-blue-500 px-4 py-2 whitespace-nowrap text-sm">
           نام و نام خانوادگی
