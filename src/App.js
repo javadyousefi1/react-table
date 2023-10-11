@@ -7,6 +7,7 @@ import Main from "./components/lazyload/main";
 import LazySelectOption from "./components/lazySelectOption/lazySelectOption";
 import MyList from "./components/dndSort/drag";
 import MainDnd from "./components/dndSort/app";
+import Uploader from "./components/fileuploader/uploader";
 const App = () => {
   // console.log("re render")
 
@@ -15,12 +16,18 @@ const App = () => {
       <div dir="rtl">
         <div className="bg-[#f4f5f7] h-screen">
           <br />
-          <Table />
+          {/* <Table /> */}
           {/* <FilterInputList /> */}
           {/* <Main /> */}
           {/* <LazySelectOption /> */}
           {/* <MyList /> */}
           {/* <MainDnd /> */}
+
+          <div className="flex justify-center">
+            <div className="w-[350px]">
+              <Uploader />
+            </div>
+          </div>
         </div>
         {/* <FetchDataComponent /> */}
         {/* <AlertComponent /> */}
