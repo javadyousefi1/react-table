@@ -1,48 +1,51 @@
 import axios from "axios";
 
-const fetchData1 = async (url, method = "get", payload, query) => {
-  // Create initial state variables
-  let data = null;
-  let error = null;
-  let isLoading = true;
+const useFetch = async (url, method = "get", payload, query) => {
+  const dataMehtod = async () => {
+    // Create initial state variables
+    let data = null;
+    let error = null;
+    let isLoading = true;
 
-  // Create an AbortController
-  const controller = new AbortController();
+    // Create an AbortController
+    const controller = new AbortController();
 
-  // Create a function to cancel the request
-  const cancelRequest = () => {
-    controller.abort();
-    console.log(
-      "%c fetchData cancel the request",
-      "color: white; font-size: 12px; background-color: blue; padding: 1px;"
-    );
+    // Create a function to cancel the request
+    const cancelRequest = () => {
+      controller.abort();
+      console.log(
+        "%c fetchData cancel the request",
+        "color: white; font-size: 12px; background-color: blue; padding: 1px;"
+      );
+    };
+
+    try {
+      // Use axios.request for dynamic method
+      const response = await axios.request({
+        url,
+        method,
+        signal: controller.signal,
+        data: payload,
+        params: query,
+      });
+      data = response.data;
+    } catch (err) {
+      error = err;
+    } finally {
+      isLoading = false;
+    }
+
+    return {
+      data,
+      isLoading,
+      error,
+      cancelRequest,
+    };
   };
-
-  try {
-    // Use axios.request for dynamic method
-    const response = await axios.request({
-      url,
-      method,
-      signal: controller.signal,
-      data: payload,
-      params: query,
-    });
-    data = response.data;
-  } catch (err) {
-    error = err;
-  } finally {
-    isLoading = false;
-  }
-
-  return {
-    data,
-    isLoading,
-    error,
-    cancelRequest,
-  };
+  return dataMehtod;
 };
 
-export default fetchData1;
+export default useFetch;
 // import React, { useState } from "react";
 // import fetchData1 from "./fetchData1"; // Import the fetchData1 function
 

@@ -9,11 +9,15 @@ const RowNum = () => {
   return (
     <>
       {/* backdrop */}
-      <div
-        className="fixed top-0 left-0 z-20"
-        onClick={() => setShowDropDown(false)}
-      ></div>
-      <div className="relative z-10 text-gray-400 bg-white p-2 rounded-xl flex justify-center items-center border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue">
+      {showDropDown && (
+        <div
+          className="fixed top-0 left-0 z-10  w-full h-full"
+          onClick={() => {
+            setShowDropDown(false);
+          }}
+        ></div>
+      )}
+      <div className="relative z-20 text-gray-400 bg-white p-2 rounded-xl flex justify-center items-center border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue">
         <div
           onClick={() => setShowDropDown((prevState) => !prevState)}
           className="flex items-center gap-x-1"

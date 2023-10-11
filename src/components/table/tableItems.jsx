@@ -6,7 +6,6 @@ const TableItems = () => {
 
   return (
     <>
-    
       <tr>
         <td
           onClick={() => setIsDropDownOpen((prevState) => !prevState)}
@@ -96,92 +95,102 @@ const TableItems = () => {
             <div className="bg-gray-100 w-8 h-8 absolute rotate-45 top-[-7px] right-5 rounded-lg"></div>
             <div className="p-3 flex justify-between">
               <div className="m-2 flex items-center gap-x-1">
-                <span className="text-sm font-bold text-slate-800">نام کاربری</span>
+                <span className="text-sm font-bold text-slate-800 whitespace-nowrap ">
+                  نام کاربری
+                </span>
                 <span className="text-blue-500">
-                     <svg
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      height="1em"
-    className="relative top-[2px]"
-      width="1em"
-    >
-      <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
-    </svg>
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    height="1em"
+                    className="relative top-[2px]"
+                    width="1em"
+                  >
+                    <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+                  </svg>
                 </span>
                 <span className="text-sm text-gray-500">0021938954</span>
               </div>
               <div className="m-2 flex items-center gap-x-1">
                 <span className="text-sm font-bold text-slate-800">جنسیت</span>
                 <span className="text-blue-500">
-                     <svg
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      height="1em"
-    className="relative top-[2px]"
-      width="1em"
-    >
-      <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
-    </svg>
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    height="1em"
+                    className="relative top-[2px]"
+                    width="1em"
+                  >
+                    <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+                  </svg>
                 </span>
                 <span className="text-sm text-gray-500">مرد</span>
               </div>
               <div className="m-2 flex items-center gap-x-1">
-                <span className="text-sm font-bold text-slate-800">نام پدر</span>
+                <span className="text-sm font-bold text-slate-800">
+                  نام پدر
+                </span>
                 <span className="text-blue-500">
-                     <svg
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      height="1em"
-    className="relative top-[2px]"
-      width="1em"
-    >
-      <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
-    </svg>
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    height="1em"
+                    className="relative top-[2px]"
+                    width="1em"
+                  >
+                    <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+                  </svg>
                 </span>
                 <span className="text-sm text-gray-500">اسماعیل</span>
               </div>
               <div className="m-2 flex items-center gap-x-1">
-                <span className="text-sm font-bold text-slate-800">تاریخ تولد</span>
+                <span className="text-sm font-bold text-slate-800">
+                  تاریخ تولد
+                </span>
                 <span className="text-blue-500">
-                     <svg
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      height="1em"
-    className="relative top-[2px]"
-      width="1em"
-    >
-      <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
-    </svg>
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    height="1em"
+                    className="relative top-[2px]"
+                    width="1em"
+                  >
+                    <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+                  </svg>
                 </span>
                 <span className="text-sm text-gray-500">۱۳۷۷/۱۲/۲۶</span>
               </div>
               <div className="m-2 flex items-center gap-x-1">
                 <span className="text-sm font-bold text-slate-800">ایمیل</span>
                 <span className="text-blue-500">
-                     <svg
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      height="1em"
-    className="relative top-[2px]"
-      width="1em"
-    >
-      <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
-    </svg>
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    height="1em"
+                    className="relative top-[2px]"
+                    width="1em"
+                  >
+                    <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+                  </svg>
                 </span>
-                <span className="text-sm text-gray-500">Javad9000@gmail.com</span>
+                <span className="text-sm text-gray-500">
+                  Javad9000@gmail.com
+                </span>
               </div>
               <div className="m-2 flex items-center gap-x-1">
-                <span className="text-sm font-bold text-slate-800">استان های دارای سمت</span>
+                <span className="text-sm font-bold text-slate-800 whitespace-nowrap">
+                  استان های دارای سمت
+                </span>
                 <span className="text-blue-500">
-                     <svg
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      height="1em"
-    className="relative top-[2px]"
-      width="1em"
-    >
-      <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
-    </svg>
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    height="1em"
+                    className="relative top-[2px]"
+                    width="1em"
+                  >
+                    <path d="M10 9a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z" />
+                  </svg>
                 </span>
                 <span className="text-sm text-gray-500">تبریز</span>
               </div>

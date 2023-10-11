@@ -18,7 +18,7 @@ const Table = () => {
 
         <div className="px-3">
           <div className="max-w-7xl mx-auto bg-white rounded-lg overflow-x-auto shadow-lg p-5">
-            <table className="w-full table-auto ">
+            <table className="w-full table-auto">
               <TableHead />
 
               <tbody>
@@ -30,15 +30,13 @@ const Table = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-10 relative ">
           <Pagination
             dir="ltr"
             count={10}
             color="primary"
-            size="  "
             defaultPage={1}
             siblingCount={1}
-
           />
       
         </div>
