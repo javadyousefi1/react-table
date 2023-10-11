@@ -5,8 +5,8 @@ import Table from "./components/table/table";
 import CardComponent from "./components/lazyload/CardComponent";
 import Main from "./components/lazyload/main";
 import LazySelectOption from "./components/lazySelectOption/lazySelectOption";
-import MyList from "./components/drag/drag";
-import MainDnd from "./components/drag/main";
+import MyList from "./components/dndSort/drag";
+import MainDnd from "./components/dndSort/app";
 const App = () => {
   // console.log("re render")
 
@@ -15,12 +15,12 @@ const App = () => {
       <div dir="rtl">
         <div className="bg-[#f4f5f7] h-screen">
           <br />
-          {/* <Table /> */}
+          <Table />
           {/* <FilterInputList /> */}
           {/* <Main /> */}
           {/* <LazySelectOption /> */}
           {/* <MyList /> */}
-          <MainDnd />
+          {/* <MainDnd /> */}
         </div>
         {/* <FetchDataComponent /> */}
         {/* <AlertComponent /> */}

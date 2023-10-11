@@ -13,6 +13,17 @@ const MyList = () => {
     { id: "8", force: false, isActive: true, content: "عملیات" },
   ]);
 
+  const initialOrder = [
+    { id: "1", force: true, isActive: true, content: "نام و نام خانوادگی" },
+    { id: "2", force: true, isActive: true, content: "کد ملی" },
+    { id: "3", force: false, isActive: true, content: "کد پرسنلی" },
+    { id: "4", force: false, isActive: true, content: "موبایل" },
+    { id: "5", force: false, isActive: true, content: "وضعیت کاربران" },
+    { id: "6", force: false, isActive: true, content: "ورود دو مرحله" },
+    { id: "7", force: false, isActive: true, content: "نوع کاربر" },
+    { id: "8", force: false, isActive: true, content: "عملیات" },
+  ];
+
   const handleDragEnd = (result) => {
     if (!result.destination) {
       return;
@@ -38,8 +49,12 @@ const MyList = () => {
     setItems(getItemsClone);
   };
 
+  const resetOrder = () => {
+    setItems(initialOrder);
+  };
+
   return (
-    <div className="w-[200px] flex justify-center items-center py-4">
+    <div className="flex justify-center flex-col ">
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="my-list">
           {(provided) => (
@@ -47,19 +62,27 @@ const MyList = () => {
               {items.map((item, index) => (
                 <Draggable key={item.id} draggableId={item.id} index={index}>
                   {(provided) => (
-                    <li
+                    <div
                       onClick={() => deleteFromList(item.id)}
                       className={
                         item.isActive
-                          ? "bg-blue-400 p-1 text-center text-white my-2 rounded-lg text-sm"
-                          : "bg-blue-400 p-1 text-center text-white my-2 rounded-lg text-sm opacity-60 line-through"
+                          ? "bg-blue-400 p-1 text-white my-2 rounded-lg text-sm flex items-center justify-between gap-x-3 "
+                          : "bg-blue-400 p-1 text-white my-2 rounded-lg text-sm opacity-60 line-through flex items-center justify-between gap-x-3 "
                       }
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      {item.content}
-                    </li>
+                      <li>{item.content}</li>
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        height="1em"
+                        width="1em"
+                      >
+                        <path d="M16.29 14.29L12 18.59l-4.29-4.3a1 1 0 00-1.42 1.42l5 5a1 1 0 001.42 0l5-5a1 1 0 00-1.42-1.42zM7.71 9.71L12 5.41l4.29 4.3a1 1 0 001.42 0 1 1 0 000-1.42l-5-5a1 1 0 00-1.42 0l-5 5a1 1 0 001.42 1.42z" />
+                      </svg>
+                    </div>
                   )}
                 </Draggable>
               ))}
@@ -68,6 +91,12 @@ const MyList = () => {
           )}
         </Droppable>
       </DragDropContext>
+      <button
+        onClick={() => resetOrder()}
+        className="bg-gray-400 p-1  text-white cursor-pointer rounded-lg text-sm flex items-center justify-center gap-x-3 px-4 py-2"
+      >
+        پیش فرض
+      </button>
     </div>
   );
 };
