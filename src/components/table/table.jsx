@@ -12,6 +12,7 @@ import Pagination from "@mui/material/Pagination";
 
 const Table = () => {
   return (
+    
     <>
       <div className="container max-w-7xl mx-auto">
         <TableNavBar />

@@ -1,25 +1,20 @@
 import axios from "axios";
 
 const fetchData = async (url, method = "get", payload, query) => {
-  // initial states
-  let data = null;
-  let error = null;
-  let isLoading = true;
-
-  // abort controller
+  // Create an AbortController
   const controller = new AbortController();
 
-  // we run this when want to cancel the request immediately
+  // Create a function to cancel the request
   const cancelRequest = () => {
     controller.abort();
     console.log(
-      "%c fetchData canceled the request",
+      "%c fetchData cancel the request",
       "color: white; font-size: 12px; background-color: blue; padding: 1px;"
     );
   };
 
   try {
-    // fetch data async
+    // Use axios.request for dynamic method
     const response = await axios.request({
       url,
       method,
@@ -27,21 +22,21 @@ const fetchData = async (url, method = "get", payload, query) => {
       data: payload,
       params: query,
     });
-    data = response.data;
-    console.log(data)
-  } catch (err) {
-    error = err;
-  } finally {
-    // at the end set loading false
-    isLoading = false;
-  }
 
-  return {
-    data,
-    isLoading,
-    error,
-    cancelRequest,
-  };
+    return {
+      data: response.data,
+      isLoading: false,
+      error: null,
+      cancelRequest,
+    };
+  } catch (err) {
+    return {
+      data: [],
+      isLoading: false,
+      error: err,
+      cancelRequest,
+    };
+  }
 };
 
 export default fetchData;
