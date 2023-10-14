@@ -1,6 +1,6 @@
 import RowNum from "./rowNum";
 import TableHead from "./tableHead";
-import TableItems from "./tableItems";
+import TableRow from "./TableRow";
 import TableNavBar from "./tableNavbar";
 import { useState } from "react";
 import Pagination from "@mui/material/Pagination";
@@ -22,9 +22,9 @@ const Table = () => {
               <TableHead />
 
               <tbody>
-                <TableItems />
-                <TableItems />
-                <TableItems />
+                <TableRow />
+                <TableRow />
+                <TableRow />
               </tbody>
             </table>
           </div>

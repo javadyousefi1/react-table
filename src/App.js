@@ -1,5 +1,7 @@
 import { useState } from "react";
+// http 
 import FetchDataComponent from "./components/fetchFunction/fetchComponent";
+
 import AlertComponent from "./components/alert/alertComponent";
 import Table from "./components/table/table";
 import CardComponent from "./components/lazyload/CardComponent";
@@ -8,24 +10,25 @@ import LazySelectOption from "./components/lazySelectOption/lazySelectOption";
 import MyList from "./components/dndSort/drag";
 import MainDnd from "./components/dndSort/app";
 import Uploader from "./components/fileuploader/uploader";
+import MultiSelectAutocomplete from "./components/autoComplete/MultiSelectAutocomplete";
 const App = () => {
-  // console.log("re render")
 
   return (
     <>
       <div dir="rtl">
         <div className="bg-[#f4f5f7] h-screen">
           <br />
-          {/* <Table /> */}
+          <Table />
           {/* <FilterInputList /> */}
           {/* <Main /> */}
           {/* <LazySelectOption /> */}
+          {/* <MultiSelectAutocomplete/> */}
           {/* <MyList /> */}
           {/* <MainDnd /> */}
 
           <div className="flex justify-center">
             <div className="w-[350px]">
-              <Uploader />
+              {/* <Uploader /> */}
             </div>
           </div>
         </div>

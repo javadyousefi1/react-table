@@ -9,6 +9,7 @@ const LazySelectOption = () => {
   const [loading, setLoading] = useState(false);
   const [limit, setLimit] = useState(5);
   const totalDatalenght = 10;
+
   useEffect(() => {
     setLoading(true);
     axios
@@ -61,10 +62,10 @@ const LazySelectOption = () => {
           <input
             value={selectedItemValue}
             onChange={({ target: { value } }) => setSelectedItemValue(value)}
-            onClick={() => {
-              setShowDropDown(true);
-              if (selectedItemValue !== "") setSelectedItemValue("");
-            }}
+            // onClick={() => {
+            //   setShowDropDown(true);
+            //   if (selectedItemValue !== "") setSelectedItemValue("");
+            // }}
             type="text"
             className="focus:shadow-2xl  overflow-y-auto focus:border-blue-500 bg-[#fff] min-w-[250px]  outline-none p-2 rounded-xl border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
           />
