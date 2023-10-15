@@ -15,34 +15,14 @@ import useFetch from "./hook/useFetch";
 import fetchData from "./utils/fetchData";
 
 const App = () => {
-  const fetch = useFetch();
-  const [cancelRequest, setCancelRequest] = useState(null);
-
-  const fetchWithDelay = () => {
-    const { data, isLoading, error, cancelRequest } = fetch(
-      "https://jsonplaceholder.typicode.com/users",
-      "get",
-      null,
-      null
-    );
-
-    console.log(cancelRequest);
-
-    setCancelRequest(cancelRequest);
-  };
-
-  const handleCancel = () => {
-    cancelRequest();
-  };
 
   return (
     <>
       <div dir="rtl">
         <div className="bg-[#f4f5f7] h-screen">
           <br />
-          <button onClick={fetchWithDelay}>Fetch Data</button>
-          <button onClick={handleCancel}>Cancel</button>
-          {/* <Table /> */}
+
+          <Table />
           {/* <FilterInputList /> */}
           {/* <Main /> */}
           {/* <LazySelectOption /> */}

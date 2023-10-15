@@ -1,10 +1,31 @@
 import { useState } from "react";
 
 const RowNum = () => {
-  const [rowNum, setRowNum] = useState(5);
+  const numOfRows = [10, 20, 30, 40, 50];
+
+  // check LS data and set some defaults
+  let rowNumLocalStorage = localStorage.getItem("rowNum")
+    ? localStorage.getItem("rowNum")
+    : 10;
+
+  // prevent mannual save data to LS
+  if (!numOfRows.includes(+rowNumLocalStorage)) {
+    rowNumLocalStorage = 10;
+    localStorage.setItem("rowNum", rowNumLocalStorage);
+  }
+
+  const [rowNum, setRowNum] = useState(rowNumLocalStorage);
   const [showDropDown, setShowDropDown] = useState(false);
 
-  const numOfRows = [5, 10, 15];
+  const handleRowNumOnChange = (seletedRowNum) => {
+    // save to LS for store row
+    localStorage.setItem("rowNum", seletedRowNum);
+    // close drop down
+    setShowDropDown(false);
+
+    // set state new row num
+    setRowNum(seletedRowNum);
+  };
 
   return (
     <>
@@ -17,8 +38,9 @@ const RowNum = () => {
           }}
         ></div>
       )}
-      <div className="relative z-20 text-gray-400 bg-white p-2 rounded-xl flex justify-center items-center border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue">
+      <div className="relative z-20 text-gray-400 bg-white w-[45px] h-[45px] p-2 rounded-xl flex justify-center items-center border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue">
         <div
+          title="تعداد سطرها"
           onClick={() => setShowDropDown((prevState) => !prevState)}
           className="flex items-center gap-x-1"
         >
@@ -41,10 +63,7 @@ const RowNum = () => {
                 {numOfRows.map((row) => (
                   <span
                     key={row}
-                    onClick={() => {
-                      setShowDropDown(false);
-                      setRowNum(row);
-                    }}
+                    onClick={() => handleRowNumOnChange(row)}
                     className="hover:bg-gray-100 rounded-lg text-center"
                   >
                     {row}

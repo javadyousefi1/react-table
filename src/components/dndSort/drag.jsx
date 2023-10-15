@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
+// mui
+import RestartAltOutlinedIcon from "@mui/icons-material/RestartAltOutlined";
+
 const MyList = () => {
   const [items, setItems] = useState([
     { id: "1", force: true, isActive: true, content: "نام و نام خانوادگی" },
@@ -66,14 +69,20 @@ const MyList = () => {
                       onClick={() => deleteFromList(item.id)}
                       className={
                         item.isActive
-                          ? "bg-blue-400 p-1 text-white my-2 rounded-lg text-sm flex items-center justify-between gap-x-3 "
-                          : "bg-blue-400 p-1 text-white my-2 rounded-lg text-sm opacity-60 line-through flex items-center justify-between gap-x-3 "
+                          ? `bg-blue-400 px-3 py-2 min-w-[200px] text-white my-2 rounded-md text-sm flex items-center justify-between gap-x-3 `
+                          : "bg-blue-400 px-3 py-2 min-w-[200px] text-white my-2 rounded-md text-sm opacity-60 line-through flex items-center justify-between gap-x-3 "
                       }
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      <li>{item.content}</li>
+                      <li
+                        className={`${
+                          item.force ? "!cursor-not-allowed" : "cursor-pointer"
+                        }`}
+                      >
+                        {item.content}
+                      </li>
                       <svg
                         viewBox="0 0 24 24"
                         fill="currentColor"
@@ -91,12 +100,14 @@ const MyList = () => {
           )}
         </Droppable>
       </DragDropContext>
-      <button
-        onClick={() => resetOrder()}
-        className="bg-gray-400 p-1  text-white cursor-pointer rounded-lg text-sm flex items-center justify-center gap-x-3 px-4 py-2"
-      >
-        پیش فرض
-      </button>
+      <div className="flex items-center justify-center">
+        <button
+          onClick={() => resetOrder()}
+          className="bg-gray-400 p-1 w-[50px]  text-white cursor-pointer rounded-lg text-sm flex items-center justify-center gap-x-3 px-4 py-2"
+        >
+          <RestartAltOutlinedIcon />
+        </button>
+      </div>
     </div>
   );
 };
