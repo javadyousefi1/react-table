@@ -12,19 +12,19 @@ import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDown
 const TableRow = () => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
-  const name = "جواد یوسفی";
-  console.log(name.length);
+
 
   return (
     <>
-      <tr>
+      <tr className={!isDropDownOpen && " border-b  border-b-gray-100"}>
         <td
           onClick={() => setIsDropDownOpen((prevState) => !prevState)}
-          className="cursor-pointer   text-center text-blue-500   whitespace-nowrap"
+          className="cursor-pointer   text-center   whitespace-nowrap"
         >
-          <span>
+          <span className="text-primary ">
             <KeyboardArrowDownOutlinedIcon
-              style={{
+              className="text-sm !w-[16px] !h-[16px] md:!h-[18px]  md:!w-[18px]"
+              sx={{
                 cursor: "pointer",
                 transform: isDropDownOpen ? "rotate(180deg)" : "rotate(0deg)",
                 transition: "transform 0.3s ease",
@@ -32,16 +32,10 @@ const TableRow = () => {
             />
           </span>
         </td>
-        <td
-          onClick={() => setIsDropDownOpen((prevState) => !prevState)}
-          className="cursor-pointer   text-center text-blue-500  px-4 py-6 whitespace-nowrap"
-        >
+        <td className="  text-center text-textColor  px-4 py-6 whitespace-nowrap">
           1
         </td>
-        <td
-          onClick={() => setIsDropDownOpen((prevState) => !prevState)}
-          className=" text-center px-4 py-6 whitespace-nowrap text-gray-500 text-sm max-w-[80px] overflow-x-hidden truncate  overflow-hidden text-overflow-ellipsis"
-        >
+        <td className=" text-center px-4 py-6 whitespace-nowrap text-textColor text-sm max-w-[80px] overflow-x-hidden truncate  overflow-hidden text-overflow-ellipsis">
           {/* tool tip  */}
           <span
             className="pb-1"
@@ -50,30 +44,30 @@ const TableRow = () => {
             جواد یوسفی
           </span>
         </td>
-        <td className="text-center px-4 py-6 whitespace-nowrap text-gray-500 text-sm">
+        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
           <span className="pb-1">1520639044</span>
         </td>
-        <td className="text-center px-4 py-6 whitespace-nowrap text-gray-500 text-sm">
+        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
           <span className="pb-1">5623</span>
         </td>
-        <td className="text-center px-4 py-6 whitespace-nowrap text-gray-500 text-sm">
+        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
           <span className="pb-1">09126868504</span>
         </td>
 
-        <td className="text-center px-4 py-6 whitespace-nowrap text-gray-500 text-sm">
-          <div className=" border border-green-500 rounded-lg inline py-[1px] px-2 text-green-500 hover:bg-green-500 hover:text-white transition-all ease-in-out duration-300 cursor-pointer ">
+        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
+          <div className=" border border-green-500 rounded-md inline py-[1px] px-2 text-green-500 hover:bg-green-500 hover:text-white transition-all ease-in-out duration-300 cursor-pointer ">
             فعال
           </div>
         </td>
-        <td className="text-center px-4 py-6 whitespace-nowrap text-gray-500 text-sm">
-          <div className=" border border-red-500 rounded-lg inline py-[1px] px-2 text-red-500 hover:bg-red-500 hover:text-white transition-all ease-in-out duration-300 cursor-pointer ">
+        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
+          <div className=" border border-red-500 rounded-md inline py-[1px] px-2 text-red-500 hover:bg-red-500 hover:text-white transition-all ease-in-out duration-300 cursor-pointer ">
             غیر فعال
           </div>
         </td>
-        <td className="text-center px-4 py-6 whitespace-nowrap text-gray-500 text-sm">
+        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
           <span className="pb-1">سازمانی</span>
         </td>
-        <td className="text-center px-4 py-6 whitespace-nowrap text-gray-500 text-sm">
+        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
           <RowIcons />
         </td>
       </tr>
@@ -175,7 +169,7 @@ const TableRow = () => {
                 <span className="text-sm  text-slate-800 whitespace-nowrap">
                   استان های دارای سمت
                 </span>
-                <span className="text-blue-500">
+                <span className="text-primary">
                   <svg
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -204,12 +198,12 @@ export const RowIcons = () => {
       <span className="px-2 md:px-1" title="تفییر رمز عبور">
         <VpnKeyOutlinedIcon
           sx={{
-            color: "#9ca3af",
+            color: "#111",
             transition: "color 0.2s linear",
 
             cursor: "pointer",
             "&:hover": {
-              color: "#1B71F2",
+              color: "#60A5FA",
             },
           }}
         />
@@ -217,11 +211,11 @@ export const RowIcons = () => {
       <span className="px-2 md:px-1" title="ویرایش اطلاعات">
         <EditOutlinedIcon
           sx={{
-            color: "#9ca3af",
+            color: "#111",
             cursor: "pointer",
             transition: "color 0.2s linear",
             "&:hover": {
-              color: "#1B71F2",
+              color: "#60A5FA",
             },
           }}
         />
@@ -230,10 +224,10 @@ export const RowIcons = () => {
         <DeleteOutlineOutlinedIcon
           sx={{
             cursor: "pointer",
-            color: "#9ca3af",
+            color: "#111",
             transition: "color 0.2s linear",
             "&:hover": {
-              color: "red",
+              color: "#ef4444",
             },
           }}
         />

@@ -26,10 +26,10 @@ const SearchInput = () => {
         <input
           type="text"
           onChange={changeHandler}
-          className="focus:shadow-2xl focus:border-blue-500 bg-[#fff] min-w-[250px]  outline-none p-2 w-full rounded-xl border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
+          className="focus:shadow-xs focus:border-blue-500 bg-[#fff] min-w-[250px]  outline-none p-2 w-full rounded-lg border border-[#ededed] hover:border-primary transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
         />
         <button type="submit">
-          <div className="text-blue-500 bg-white p-2 rounded-xl border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue">
+          <div className="text-blue-500 bg-white p-2 rounded-lg border border-[#ededed] hover:border-primary transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue">
             <SearchOutlinedIcon />
           </div>
         </button>

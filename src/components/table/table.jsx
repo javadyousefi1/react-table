@@ -11,14 +11,18 @@ import Pagination from "@mui/material/Pagination";
 // refactor drop down
 
 const Table = () => {
+  const [pageCount, setPageCount] = useState(0);
+
+  const [test, setTest] = useState(4);
+
+  
   return (
-    
     <>
       <div className="container max-w-7xl mx-auto">
-        <TableNavBar />
+        <TableNavBar setTest={setTest} />
 
         <div className="px-3">
-          <div className="max-w-7xl mx-auto bg-white rounded-lg overflow-x-auto shadow-lg p-5">
+          <div className="max-w-7xl mx-auto bg-white rounded-lg overflow-x-auto border border-gray-200 p-5">
             <table className="w-full table-auto">
               <TableHead />
 
@@ -34,12 +38,14 @@ const Table = () => {
         <div className="flex justify-center mt-10 relative ">
           <Pagination
             dir="ltr"
+            onChange={(e) => setPageCount(+e.currentTarget.innerText)}
+            // set from db response
             count={10}
             color="primary"
+            className=""
             defaultPage={1}
             siblingCount={1}
           />
-      
         </div>
       </div>
     </>

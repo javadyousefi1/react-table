@@ -58,6 +58,9 @@ const MyList = () => {
 
   return (
     <div className="flex justify-center flex-col ">
+      
+      <h4 className="text-right font-bold mb-2 text-textColor">ترتیب ستون ها</h4>
+
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="my-list">
           {(provided) => (
@@ -69,8 +72,8 @@ const MyList = () => {
                       onClick={() => deleteFromList(item.id)}
                       className={
                         item.isActive
-                          ? `bg-blue-400 px-3 py-2 min-w-[200px] text-white my-2 rounded-md text-sm flex items-center justify-between gap-x-3 `
-                          : "bg-blue-400 px-3 py-2 min-w-[200px] text-white my-2 rounded-md text-sm opacity-60 line-through flex items-center justify-between gap-x-3 "
+                          ? ` px-3 py-2 min-w-[200px] text-sortText hover:border-primary border border-white bg-sortBg my-2 rounded-md text-sm flex items-center justify-between gap-x-3 `
+                          : " px-3 py-2 min-w-[200px] text-sortText hover:border-primary border border-white bg-sortBg my-2 rounded-md text-sm opacity-60 line-through flex items-center justify-between gap-x-3 "
                       }
                       ref={provided.innerRef}
                       {...provided.draggableProps}
@@ -103,8 +106,10 @@ const MyList = () => {
       <div className="flex items-center justify-center">
         <button
           onClick={() => resetOrder()}
-          className="bg-gray-400 p-1 w-[50px]  text-white cursor-pointer rounded-lg text-sm flex items-center justify-center gap-x-3 px-4 py-2"
+          className="= p-1  text-primary cursor-pointer rounded-lg text-sm flex items-center justify-center gap-x-3 px-4 py-2"
         >
+          پیش فرض
+
           <RestartAltOutlinedIcon />
         </button>
       </div>

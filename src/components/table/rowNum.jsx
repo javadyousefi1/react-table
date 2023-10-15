@@ -38,7 +38,7 @@ const RowNum = () => {
           }}
         ></div>
       )}
-      <div className="relative z-20 text-gray-400 bg-white w-[45px] h-[45px] p-2 rounded-xl flex justify-center items-center border border-[#ededed] hover:border-gray-400 transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue">
+      <div className="relative z-20 text-gray-400 bg-white w-[45px] h-[45px] p-2 rounded-lg flex justify-center items-center border border-[#ededed] hover:border-primary transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue">
         <div
           title="تعداد سطرها"
           onClick={() => setShowDropDown((prevState) => !prevState)}
