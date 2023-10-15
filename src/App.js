@@ -8,7 +8,6 @@ import CardComponent from "./components/lazyload/CardComponent";
 import Main from "./components/lazyload/main";
 import LazySelectOption from "./components/lazySelectOption/lazySelectOption";
 import MyList from "./components/dndSort/drag";
-import MainDnd from "./components/dndSort/app";
 import Uploader from "./components/fileuploader/uploader";
 import MultiSelectAutocomplete from "./components/autoComplete/MultiSelectAutocomplete";
 import useFetch from "./hook/useFetch";

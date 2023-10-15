@@ -9,69 +9,135 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import VpnKeyOutlinedIcon from "@mui/icons-material/VpnKeyOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 
-const TableRow = () => {
+const TableRow = ({ userData, rowNum ,columns}) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
-
-
-
+  const rowArray = columns.slice(2, 8);
+  const dropDownArray =
+    columns.length > 8 ? columns.slice(9, columns.length - 1) : null;
+  const handleDeactiveUser = (userId) => {
+    console.log(userId);
+    //show alert
+    //send request
+  };
+  const handleTwoFactorEnabled = (userId) => {
+    console.log(userId);
+    //show alert
+    //send request
+  };
   return (
     <>
-      <tr className={!isDropDownOpen && " border-b  border-b-gray-100"}>
-        <td
-          onClick={() => setIsDropDownOpen((prevState) => !prevState)}
-          className="cursor-pointer   text-center   whitespace-nowrap"
-        >
-          <span className="text-primary ">
-            <KeyboardArrowDownOutlinedIcon
-              className="text-sm !w-[16px] !h-[16px] md:!h-[18px]  md:!w-[18px]"
-              sx={{
-                cursor: "pointer",
-                transform: isDropDownOpen ? "rotate(180deg)" : "rotate(0deg)",
-                transition: "transform 0.3s ease",
-              }}
-            />
-          </span>
-        </td>
-        <td className="  text-center text-textColor  px-4 py-6 whitespace-nowrap">
-          1
-        </td>
-        <td className=" text-center px-4 py-6 whitespace-nowrap text-textColor text-sm max-w-[80px] overflow-x-hidden truncate  overflow-hidden text-overflow-ellipsis">
-          {/* tool tip  */}
-          <span
-            className="pb-1"
-            title="جواد یوسفی جواد یوسفی جواد یوسفی جواد یوسفی"
+      {userData && (
+        <tr className={!isDropDownOpen && " border-b  border-b-gray-100"}>
+          <td
+            onClick={() => setIsDropDownOpen((prevState) => !prevState)}
+            className="cursor-pointer   text-center   whitespace-nowrap"
           >
-            جواد یوسفی
-          </span>
-        </td>
-        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
-          <span className="pb-1">1520639044</span>
-        </td>
-        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
-          <span className="pb-1">5623</span>
-        </td>
-        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
-          <span className="pb-1">09126868504</span>
-        </td>
+            <span className="text-primary ">
+              <KeyboardArrowDownOutlinedIcon
+                className="text-sm !w-[16px] !h-[16px] md:!h-[18px]  md:!w-[18px]"
+                sx={{
+                  cursor: "pointer",
+                  transform: isDropDownOpen ? "rotate(180deg)" : "rotate(0deg)",
+                  transition: "transform 0.3s ease",
+                }}
+              />
+            </span>
+          </td>
+          <td className="  text-center text-textColor  px-4 py-6 whitespace-nowrap">
+            {rowNum}
+          </td>
+          <td className=" text-center px-4 py-6 whitespace-nowrap text-textColor text-sm max-w-[80px] overflow-x-hidden truncate  overflow-hidden text-overflow-ellipsis">
+            <span
+              className="pb-1"
+              title={`${userData.firstName || ""} ${userData.lastName || ""}`}
+            >
+              {`${userData.firstName || ""} ${userData.lastName || ""} `}
+            </span>
+          </td>
+          {rowArray.length > 0 &&
+            rowArray.map((td, index) => {
+              switch (td) {
+                case "status":
+                  return (
+                    <td
+                      className="text-center px-4 whitespace-nowrap text-textColor text-sm"
+                      key={`td${index}`}
+                    >
+                      <button
+                        onClick={() => handleDeactiveUser(userData.userId)}
+                        className=" border border-green-500 rounded-md inline py-1 px-3 text-green-500 hover:bg-green-500 hover:text-white transition-all ease-in-out duration-300 cursor-pointer "
+                      >
+                        {userData[td] ? "فهاب" : "عیر قهال"}
+                      </button>
+                    </td>
+                  );
+                case "twoFactorEnabled":
+                  return (
+                    <td key={`td${index}`} className="text-center px-4 whitespace-nowrap text-textColor text-sm">
+                      <button
+                        onClick={() => handleTwoFactorEnabled(userData.userId)}
+                        className=" border border-red-500 rounded-md inline py-1 px-3 text-red-500 hover:bg-red-500 hover:text-white transition-all ease-in-out duration-300 cursor-pointer "
+                      >
+                        غیر فعال
+                      </button>
+                    </td>
+                  );
 
-        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
-          <div className=" border border-green-500 rounded-md inline py-[1px] px-2 text-green-500 hover:bg-green-500 hover:text-white transition-all ease-in-out duration-300 cursor-pointer ">
-            فعال
-          </div>
-        </td>
-        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
-          <div className=" border border-red-500 rounded-md inline py-[1px] px-2 text-red-500 hover:bg-red-500 hover:text-white transition-all ease-in-out duration-300 cursor-pointer ">
-            غیر فعال
-          </div>
-        </td>
-        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
-          <span className="pb-1">سازمانی</span>
-        </td>
-        <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
-          <RowIcons />
-        </td>
-      </tr>
+                default:
+                  break;
+              }
+              return (
+                <td key={`td${index}`}className="text-center px-4 whitespace-nowrap text-textColor text-sm">
+                  <span className="pb-1">{userData[td] || "-"}</span>
+                </td>
+              );
+            })}
 
+          {/* user twoFactorEnabled */}
+
+          <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
+            <div className="flex justify-between items-center">
+              <span className="px-2 md:px-1" title="تفییر رمز عبور">
+                <VpnKeyOutlinedIcon
+                  sx={{
+                    color: "#111",
+                    transition: "color 0.2s linear",
+
+                    cursor: "pointer",
+                    "&:hover": {
+                      color: "#60A5FA",
+                    },
+                  }}
+                />
+              </span>
+              <span className="px-2 md:px-1" title="ویرایش اطلاعات">
+                <EditOutlinedIcon
+                  sx={{
+                    color: "#111",
+                    cursor: "pointer",
+                    transition: "color 0.2s linear",
+                    "&:hover": {
+                      color: "#60A5FA",
+                    },
+                  }}
+                />
+              </span>
+              <span className="px-2 md:px-1" title="حذف کاربر">
+                <DeleteOutlineOutlinedIcon
+                  sx={{
+                    cursor: "pointer",
+                    color: "#111",
+                    transition: "color 0.2s linear",
+                    "&:hover": {
+                      color: "#ef4444",
+                    },
+                  }}
+                />
+              </span>
+            </div>
+          </td>
+        </tr>
+      )}
       {isDropDownOpen && (
         <motion.tr
           initial={{ opacity: 0, y: 10 }}
@@ -167,7 +233,7 @@ const TableRow = () => {
               </div>
               <div className="m-2 flex items-center gap-x-1">
                 <span className="text-sm  text-slate-800 whitespace-nowrap">
-                  استان های دارای سمت
+                  استان های دارای سمت{userData.nationalCode}
                 </span>
                 <span className="text-primary">
                   <svg
@@ -191,47 +257,3 @@ const TableRow = () => {
 };
 
 export default TableRow;
-
-export const RowIcons = () => {
-  return (
-    <div className="flex justify-between items-center">
-      <span className="px-2 md:px-1" title="تفییر رمز عبور">
-        <VpnKeyOutlinedIcon
-          sx={{
-            color: "#111",
-            transition: "color 0.2s linear",
-
-            cursor: "pointer",
-            "&:hover": {
-              color: "#60A5FA",
-            },
-          }}
-        />
-      </span>
-      <span className="px-2 md:px-1" title="ویرایش اطلاعات">
-        <EditOutlinedIcon
-          sx={{
-            color: "#111",
-            cursor: "pointer",
-            transition: "color 0.2s linear",
-            "&:hover": {
-              color: "#60A5FA",
-            },
-          }}
-        />
-      </span>
-      <span className="px-2 md:px-1" title="حذف کاربر">
-        <DeleteOutlineOutlinedIcon
-          sx={{
-            cursor: "pointer",
-            color: "#111",
-            transition: "color 0.2s linear",
-            "&:hover": {
-              color: "#ef4444",
-            },
-          }}
-        />
-      </span>
-    </div>
-  );
-};

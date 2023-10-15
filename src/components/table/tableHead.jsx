@@ -1,4 +1,5 @@
-const TableHead = () => {
+const TableHead = ({ columns, columsObject }) => {
+  
   return (
     <thead>
       <tr>
@@ -9,7 +10,15 @@ const TableHead = () => {
         <th className="text-textColor px-4 py-2 whitespace-nowrap text-sm">
           نام و نام خانوادگی
         </th>
-        <th className="text-textColor px-4 py-2 whitespace-nowrap text-sm">
+        {columns.length > 0 &&
+          columns.map((th, index) => {
+            return (
+              <th key={index} className="text-textColor px-4 py-2 whitespace-nowrap text-sm">
+                {columsObject[th]}
+              </th>
+            );
+          })}
+        {/* <th className="text-textColor px-4 py-2 whitespace-nowrap text-sm">
           کد ملی
         </th>
         <th className="text-textColor px-4 py-2 whitespace-nowrap text-sm">
@@ -26,7 +35,7 @@ const TableHead = () => {
         </th>
         <th className="text-textColor px-4 py-2 whitespace-nowrap text-sm">
           نوع کاربر
-        </th>
+        </th> */}
         <th className="text-textColor px-4 py-2 whitespace-nowrap text-sm">
           عملیات
         </th>

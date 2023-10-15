@@ -4,7 +4,7 @@ import { useState } from "react";
 import RowNum from "./rowNum";
 import SearchInput from "./searchInput";
 import FilterInputList from "./FilterInputList";
-import MainDnd from "../dndSort/app";
+import MainDnd from "../dndSort/drag";
 import ChildrenAlert from "../alert/chlidrenAlert";
 
 // mui

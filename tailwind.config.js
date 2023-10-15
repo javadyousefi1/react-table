@@ -9,7 +9,7 @@ module.exports = {
         borderHover: "#cce3ff",
         buttonHover: "#4c97f3",
         textColor: "#111",
-        sortBg: "#c9e1ff",
+        sortBg: "#e3f0ff",
         mainRed: "#ef4444",
         sortText: "#06418b",
       },

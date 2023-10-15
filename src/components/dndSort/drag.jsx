@@ -4,7 +4,7 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 // mui
 import RestartAltOutlinedIcon from "@mui/icons-material/RestartAltOutlined";
 
-const MyList = () => {
+const MainDnd = () => {
   const [items, setItems] = useState([
     { id: "1", force: true, isActive: true, content: "نام و نام خانوادگی" },
     { id: "2", force: true, isActive: true, content: "کد ملی" },
@@ -117,4 +117,4 @@ const MyList = () => {
   );
 };
 
-export default MyList;
+export default MainDnd;
