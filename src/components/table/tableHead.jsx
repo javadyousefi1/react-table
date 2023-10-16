@@ -1,8 +1,7 @@
 const TableHead = ({ columns, columsObject }) => {
-  
   return (
     <thead>
-      <tr>
+      <tr lassName="">
         <th className="text-textColor px-4 py-2 whitespace-nowrap text-sm"></th>
         <th className=" text-textColor px-4 py-2 whitespace-nowrap text-sm">
           سطر
@@ -13,7 +12,10 @@ const TableHead = ({ columns, columsObject }) => {
         {columns.length > 0 &&
           columns.map((th, index) => {
             return (
-              <th key={index} className="text-textColor px-4 py-2 whitespace-nowrap text-sm">
+              <th
+                key={index}
+                className="text-textColor px-4 py-2 whitespace-nowrap text-sm"
+              >
                 {columsObject[th]}
               </th>
             );

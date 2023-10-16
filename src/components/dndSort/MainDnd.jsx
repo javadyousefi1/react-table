@@ -98,7 +98,7 @@ const MainDnd = ({ setColumnsOrder, columnsOrder }) => {
         </Droppable>
       </DragDropContext>
       <div className="flex items-center justify-center flex-col">
-        <p className="text-mainRed text-xs max-w-[150px] my-3">شما قادر به غیر فعال کردن نام و نام خانوادگی و کد ملی نیستید</p>
+        <p className="text-mainRed text-xs max-w-[150px] my-3 text-center">شما قادر به غیر فعال کردن نام و نام خانوادگی و کد ملی نیستید</p>
 
         <button
           onClick={() => resetOrder()}

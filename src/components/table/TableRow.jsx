@@ -8,24 +8,111 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import VpnKeyOutlinedIcon from "@mui/icons-material/VpnKeyOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+import AlertTailwind from "../alert/alert";
+import toast from "react-hot-toast";
 
 const TableRow = ({ userData, rowNum, columns }) => {
+  // table row drop down
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+
+  // alert tailwind state
+  const [showAlert, setShowAlert] = useState(false);
+
+  // set alert details in diffrents alert
+  const [alertDetails, setAlertDetails] = useState({
+    icon: null,
+    title: "",
+    confirmButtonText: "",
+    text: "",
+    secondryButton: "",
+    HandlerOnSubmit: null,
+  });
+
+  // current userName
+  const currentUserRowName = userData.firstName + " " + userData.lastName;
+
+  const handleDeactiveUser = () => {
+    alert(`handleDeactiveUser  ${userData.userId}`);
+    // deActive or active user in here
+    // send request
+  };
+
+  const handleTwoFactorEnabled = () => {
+    alert(`handleTwoFactorEnabled  ${userData.userId}`);
+    // deActive or active handleTwoFactorEnabled user in here
+    // send request
+  };
+
+  const handleDeleteUser = () => {
+    alert(`handleDeleteUser  ${userData.userId}`);
+    // deActive or active handleTwoFactorEnabled user in here
+    // send request
+  };
+
+  const alertDeleteUser = () => {
+    setAlertDetails({
+      title: " حذف شود  ؟",
+      confirmButtonText: "بله",
+      text: `آیا کاربر ${currentUserRowName} حذف شود ؟`,
+      secondryButton: "لغو",
+      HandlerOnSubmit: handleDeleteUser,
+    });
+
+    setShowAlert(true);
+  };
+
   const rowArray = columns.slice(2, 8);
+
+  // ! where we use this ?
   const dropDownArray =
     columns.length > 8 ? columns.slice(9, columns.length - 1) : null;
-  const handleDeactiveUser = (userId) => {
-    console.log(userId);
-    //show alert
-    //send request
+
+  const alertDeactiveUser = (userId) => {
+    const isUserActive = !Boolean(userData.status) ? "فعال" : "غیر فعال";
+
+    setAlertDetails({
+      title: "آیا مطمئن هستید ؟",
+      confirmButtonText: "بله",
+      text: `آیا از ${isUserActive} کردن ${currentUserRowName} مطمئن هستید ؟`,
+      secondryButton: "لغو",
+      HandlerOnSubmit: handleDeactiveUser,
+    });
+
+    setShowAlert(true);
   };
-  const handleTwoFactorEnabled = (userId) => {
-    console.log(userId);
-    //show alert
-    //send request
+
+  const AlertTwoFactorEnabled = (userId) => {
+    const isUserActiveTwoFactorEnabled = !Boolean(userData.twoFactorEnabled)
+      ? "فعال"
+      : "غیر فعال";
+
+    console.log(isUserActiveTwoFactorEnabled);
+
+    setAlertDetails({
+      title: "آیا مطمئن هستید ؟",
+      confirmButtonText: "بله",
+      text: `آیا از ${isUserActiveTwoFactorEnabled} کردن ${currentUserRowName} مطمئن هستید ؟`,
+      secondryButton: "لغو",
+      HandlerOnSubmit: handleTwoFactorEnabled,
+    });
+
+    setShowAlert(true);
   };
+
   return (
     <>
+      {showAlert && (
+        <AlertTailwind
+          showAlert={showAlert}
+          setShowAlert={setShowAlert}
+          backdrop
+          title={alertDetails.title}
+          text={alertDetails.text}
+          confirmButtonText={alertDetails.confirmButtonText}
+          secondryButton={alertDetails.secondryButton}
+          HandlerOnSubmit={alertDetails.HandlerOnSubmit}
+        />
+      )}
       {userData && (
         <tr className={!isDropDownOpen ? " border-b  border-b-gray-100" : ""}>
           <td
@@ -64,8 +151,12 @@ const TableRow = ({ userData, rowNum, columns }) => {
                       key={`td${index}`}
                     >
                       <button
-                        onClick={() => handleDeactiveUser(userData.userId)}
-                        className=" border border-green-500 rounded-md inline py-1 px-3 text-green-500 hover:bg-green-500 hover:text-white transition-all ease-in-out duration-300 cursor-pointer "
+                        onClick={() => alertDeactiveUser(userData.userId)}
+                        className={`${
+                          userData.status
+                            ? "border-green-500 text-green-500 hover:bg-green-500"
+                            : "border-red-500 text-red-500 hover:bg-red-500"
+                        } border  rounded-md inline py-1 px-3  hover:text-white transition-all ease-in-out duration-300 cursor-pointer    `}
                       >
                         {userData[td] ? "فعال" : "غیر فعال"}
                       </button>
@@ -78,10 +169,14 @@ const TableRow = ({ userData, rowNum, columns }) => {
                       className="text-center px-4 whitespace-nowrap text-textColor text-sm"
                     >
                       <button
-                        onClick={() => handleTwoFactorEnabled(userData.userId)}
-                        className=" border border-red-500 rounded-md inline py-1 px-3 text-red-500 hover:bg-red-500 hover:text-white transition-all ease-in-out duration-300 cursor-pointer "
+                        onClick={() => AlertTwoFactorEnabled(userData.userId)}
+                        className={`${
+                          userData.twoFactorEnabled
+                            ? "border-green-500 text-green-500 hover:bg-green-500"
+                            : "border-red-500 text-red-500 hover:bg-red-500"
+                        } border  rounded-md inline py-1 px-3  hover:text-white transition-all ease-in-out duration-300 cursor-pointer    `}
                       >
-                        غیر فعال
+                        {userData[td] ? "فعال" : "غیر فعال"}
                       </button>
                     </td>
                   );
@@ -128,7 +223,11 @@ const TableRow = ({ userData, rowNum, columns }) => {
                   }}
                 />
               </span>
-              <span className="px-2 md:px-1" title="حذف کاربر">
+              <span
+                className="px-2 md:px-1"
+                title="حذف کاربر"
+                onClick={() => alertDeleteUser()}
+              >
                 <DeleteOutlineOutlinedIcon
                   sx={{
                     cursor: "pointer",

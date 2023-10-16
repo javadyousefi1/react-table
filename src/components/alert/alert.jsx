@@ -64,10 +64,12 @@ const AlertTailwind = ({
   secondryButton,
   backdrop,
   backdropClose,
+  showAlert,
+  setShowAlert,
+  HandlerOnSubmit,
 }) => {
-  const [showModal, setShowModal] = useState(true);
-
   const secondryButtonHandler = () => {
+    setShowAlert(false);
     console.log("secondryButtonHandler clicked !");
   };
 
@@ -79,13 +81,13 @@ const AlertTailwind = ({
     if (!backdropClose) {
       return;
     }
-    setShowModal(false);
+    setShowAlert(false);
   };
 
   return (
     <>
       <AnimatePresence>
-        {showModal && (
+        {showAlert && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -98,8 +100,8 @@ const AlertTailwind = ({
             }}
             className={
               backdrop
-                ? "bg-black fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center z-9999"
-                : " fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center z-9999"
+                ? "bg-black fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center z-50"
+                : " fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center z-50"
             }
           >
             <motion.div
@@ -145,7 +147,10 @@ const AlertTailwind = ({
                   <button
                     // ref={submitButtonRef}
                     autoFocus
-                    onClick={() => setShowModal(false)}
+                    onClick={() => {
+                      setShowAlert(false);
+                      HandlerOnSubmit();
+                    }}
                     className="outline-none text-white px-6 py-2 bg-blue-500 rounded-lg text-sm hover:bg-opacity-80 transition-all ease-in-out duration-150"
                   >
                     {confirmButtonText}

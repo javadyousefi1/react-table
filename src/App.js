@@ -13,20 +13,18 @@ import MultiSelectAutocomplete from "./components/autoComplete/MultiSelectAutoco
 import useFetch from "./hook/useFetch";
 import fetchData from "./utils/fetchData";
 
-
 const App = () => {
   return (
     <>
       <div dir="rtl">
-        <div className="bg-[#f4f5f7] h-screen">
+        <div className="bg-[#f4f5f7] h-screen ">
           <br />
 
-          <Table />
+            <Table />
           {/* <FilterInputList /> */}
           {/* <Main /> */}
           {/* <LazySelectOption /> */}
           {/* <MultiSelectAutocomplete/> */}
-
 
           <div className="flex justify-center">
             <div className="w-[350px]">{/* <Uploader /> */}</div>

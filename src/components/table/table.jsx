@@ -14,6 +14,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import VpnKeyOutlinedIcon from "@mui/icons-material/VpnKeyOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import { Toaster } from "react-hot-toast";
+import AlertTailwind from "../alert/alert";
 
 // loading
 // pagination
@@ -34,7 +35,7 @@ const dummyData = {
         userName: "0229570909",
         personelCode: null,
         firstName: "mohammad",
-        lastName: null,
+        lastName: "amozad",
         fatherName: null,
         gender: false,
         email: null,
@@ -43,9 +44,9 @@ const dummyData = {
         birthDate: null,
         signFileId: null,
         avatarFileId: null,
-        twoFactorEnabled: false,
+        twoFactorEnabled: true,
         type: 0,
-        status: 1,
+        status: 0,
         userSystems: [
           {
             id: "57cf3bc1-99ff-4875-b8b9-08db07469dc6",
@@ -1275,6 +1276,7 @@ const Table = () => {
 
   return (
     <>
+
       <div>
         {/* you should put this component at the laylout your app  */}
         <Toaster  limit={3}/>
@@ -1290,9 +1292,9 @@ const Table = () => {
           setSearchValue={setSearchValue}
         />
 
-        <div className="px-3">
+        <div className="px-3 overflow-y-scroll max-h-[700px]">
           <div className="max-w-7xl mx-auto bg-white rounded-lg overflow-x-auto border border-gray-200 p-5">
-            <table className="w-full table-auto">
+            <table className="w-full table-auto ">
               <TableHead
                 columsObject={columsObject}
                 columns={columns.slice(2, 8)}
