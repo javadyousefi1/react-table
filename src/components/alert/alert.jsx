@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 function iconRender(iconType) {
   switch (iconType) {
@@ -175,3 +176,24 @@ const AlertTailwind = ({
 };
 
 export default AlertTailwind;
+
+AlertTailwind.propTypes = {
+  icon: PropTypes.string,
+  title: PropTypes.string,
+  text: PropTypes.string,
+  confirmButtonText: PropTypes.string,
+  secondryButton: PropTypes.string,
+  setShowAlert: PropTypes.func,
+  HandlerOnSubmit: PropTypes.func,
+};
+
+// icon,
+// title,
+// text,
+// confirmButtonText,
+// secondryButton,
+// backdrop,
+// backdropClose,
+// showAlert,
+// setShowAlert,
+// HandlerOnSubmit,

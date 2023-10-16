@@ -8,8 +8,10 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import VpnKeyOutlinedIcon from "@mui/icons-material/VpnKeyOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+
+// custome alert
 import AlertTailwind from "../alert/alert";
-import toast from "react-hot-toast";
+import ChildrenAlert from "../alert/chlidrenAlert";
 
 const TableRow = ({ userData, rowNum, columns }) => {
   // table row drop down
@@ -17,6 +19,9 @@ const TableRow = ({ userData, rowNum, columns }) => {
 
   // alert tailwind state
   const [showAlert, setShowAlert] = useState(false);
+
+  // show change password modal
+  const [showChangePassword, setShowChangePassword] = useState(false);
 
   // set alert details in diffrents alert
   const [alertDetails, setAlertDetails] = useState({
@@ -49,8 +54,17 @@ const TableRow = ({ userData, rowNum, columns }) => {
     // send request
   };
 
+  const handleChangePasswordUser = () => {
+    // request to change user password
+
+
+    // hide modal :
+    setShowChangePassword(false);
+  };
+
   const alertDeleteUser = () => {
     setAlertDetails({
+      icon: "err",
       title: " حذف شود  ؟",
       confirmButtonText: "بله",
       text: `آیا کاربر ${currentUserRowName} حذف شود ؟`,
@@ -101,11 +115,54 @@ const TableRow = ({ userData, rowNum, columns }) => {
 
   return (
     <>
+      {showChangePassword && (
+        <ChildrenAlert backdrop>
+          <div className="flex flex-col gap-y-2">
+            <h4 className="text-right font-bold mb-2 text-textColor">
+              تغییر رمز عبور
+            </h4>
+
+            <div className="flex flex-col my-4">
+              <span>کاربر : {currentUserRowName}</span>
+              <span>کد ملی : {userData.nationalCode}</span>
+            </div>
+
+            <input
+              type="text"
+              placeholder="رمز عبور"
+              className="focus:shadow-xs mb-2 focus:border-blue-500 bg-[#fff] min-w-[150px]  outline-none p-2 rounded-lg border border-[#ededed] hover:border-primary transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
+            />
+
+            <input
+              type="text"
+              placeholder="تکرار رمز عبور"
+              className="focus:shadow-xs focus:border-blue-500 bg-[#fff] min-w-[150px]  outline-none p-2 rounded-lg border border-[#ededed] hover:border-primary transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
+            />
+
+            <div className="flex gap-x-2">
+              <button
+                onClick={() => setShowChangePassword(false)}
+                className="text-white bg-mainRed hover:bg-mainRed transition-all ease-in-out duration-150 text-sm mt-5  py-2 rounded-lg px-8"
+              >
+                انصراف
+              </button>
+              <button
+                onClick={() => handleChangePasswordUser()}
+                className="text-white bg-primary hover:bg-blue-500 transition-all ease-in-out duration-150 text-sm mt-5  py-2 rounded-lg px-8"
+              >
+                تایید
+              </button>
+            </div>
+          </div>
+        </ChildrenAlert>
+      )}
+      
       {showAlert && (
         <AlertTailwind
           showAlert={showAlert}
           setShowAlert={setShowAlert}
           backdrop
+          icon={alertDetails.icon}
           title={alertDetails.title}
           text={alertDetails.text}
           confirmButtonText={alertDetails.confirmButtonText}
@@ -198,7 +255,13 @@ const TableRow = ({ userData, rowNum, columns }) => {
 
           <td className="text-center px-4 whitespace-nowrap text-textColor text-sm">
             <div className="flex justify-between items-center">
-              <span className="px-2 md:px-1" title="تفییر رمز عبور">
+              <span
+                className="px-2 md:px-1"
+                title="تفییر رمز عبور"
+                onClick={() => {
+                  setShowChangePassword(true);
+                }}
+              >
                 <VpnKeyOutlinedIcon
                   sx={{
                     color: "#111",

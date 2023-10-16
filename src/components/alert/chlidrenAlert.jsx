@@ -1,4 +1,7 @@
+// animation package
 import { AnimatePresence, motion } from "framer-motion";
+
+import PropTypes from "prop-types";
 
 const ChildrenAlert = ({
   backdrop,
@@ -65,3 +68,7 @@ const ChildrenAlert = ({
 };
 
 export default ChildrenAlert;
+
+ChildrenAlert.propTypes = {
+  setShowAlretChildren: PropTypes.func,
+};
