@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+// ! you can delete this file if use it in tableNavbar.jsx
+
 const RowNum = () => {
   const numOfRows = [10, 20, 30, 40, 50];
 

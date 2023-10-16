@@ -66,12 +66,6 @@ const AlertTailwind = ({
   backdropClose,
 }) => {
   const [showModal, setShowModal] = useState(true);
-  // const submitButtonRef = useRef();
-
-  // ? focus on button on mount for close with enter btn
-  // useEffect(() => {
-  //   submitButtonRef.current.focus();
-  // }, []);
 
   const secondryButtonHandler = () => {
     console.log("secondryButtonHandler clicked !");

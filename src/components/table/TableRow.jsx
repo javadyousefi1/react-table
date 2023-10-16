@@ -9,7 +9,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import VpnKeyOutlinedIcon from "@mui/icons-material/VpnKeyOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 
-const TableRow = ({ userData, rowNum ,columns}) => {
+const TableRow = ({ userData, rowNum, columns }) => {
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const rowArray = columns.slice(2, 8);
   const dropDownArray =
@@ -27,7 +27,7 @@ const TableRow = ({ userData, rowNum ,columns}) => {
   return (
     <>
       {userData && (
-        <tr className={!isDropDownOpen && " border-b  border-b-gray-100"}>
+        <tr className={!isDropDownOpen ? " border-b  border-b-gray-100" : ""}>
           <td
             onClick={() => setIsDropDownOpen((prevState) => !prevState)}
             className="cursor-pointer   text-center   whitespace-nowrap"
@@ -67,13 +67,16 @@ const TableRow = ({ userData, rowNum ,columns}) => {
                         onClick={() => handleDeactiveUser(userData.userId)}
                         className=" border border-green-500 rounded-md inline py-1 px-3 text-green-500 hover:bg-green-500 hover:text-white transition-all ease-in-out duration-300 cursor-pointer "
                       >
-                        {userData[td] ? "فهاب" : "عیر قهال"}
+                        {userData[td] ? "فعال" : "غیر فعال"}
                       </button>
                     </td>
                   );
                 case "twoFactorEnabled":
                   return (
-                    <td key={`td${index}`} className="text-center px-4 whitespace-nowrap text-textColor text-sm">
+                    <td
+                      key={`td${index}`}
+                      className="text-center px-4 whitespace-nowrap text-textColor text-sm"
+                    >
                       <button
                         onClick={() => handleTwoFactorEnabled(userData.userId)}
                         className=" border border-red-500 rounded-md inline py-1 px-3 text-red-500 hover:bg-red-500 hover:text-white transition-all ease-in-out duration-300 cursor-pointer "
@@ -87,7 +90,10 @@ const TableRow = ({ userData, rowNum ,columns}) => {
                   break;
               }
               return (
-                <td key={`td${index}`}className="text-center px-4 whitespace-nowrap text-textColor text-sm">
+                <td
+                  key={`td${index}`}
+                  className="text-center px-4 whitespace-nowrap text-textColor text-sm"
+                >
                   <span className="pb-1">{userData[td] || "-"}</span>
                 </td>
               );

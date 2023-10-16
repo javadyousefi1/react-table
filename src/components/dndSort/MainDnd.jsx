@@ -1,20 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 // mui
 import RestartAltOutlinedIcon from "@mui/icons-material/RestartAltOutlined";
+import toast from "react-hot-toast";
 
-const MainDnd = () => {
-  const [items, setItems] = useState([
-    { id: "1", force: true, isActive: true, content: "نام و نام خانوادگی" },
-    { id: "2", force: true, isActive: true, content: "کد ملی" },
-    { id: "3", force: false, isActive: true, content: "کد پرسنلی" },
-    { id: "4", force: false, isActive: true, content: "موبایل" },
-    { id: "5", force: false, isActive: true, content: "وضعیت کاربران" },
-    { id: "6", force: false, isActive: true, content: "ورود دو مرحله" },
-    { id: "7", force: false, isActive: true, content: "نوع کاربر" },
-    { id: "8", force: false, isActive: true, content: "عملیات" },
-  ]);
+const MainDnd = ({ setColumnsOrder, columnsOrder }) => {
+  useEffect(() => {
+    // update local storage on every changes in dnd
+    localStorage.setItem("columnOrder", JSON.stringify(columnsOrder));
+  }, [columnsOrder]);
 
   const initialOrder = [
     { id: "1", force: true, isActive: true, content: "نام و نام خانوادگی" },
@@ -24,7 +19,6 @@ const MainDnd = () => {
     { id: "5", force: false, isActive: true, content: "وضعیت کاربران" },
     { id: "6", force: false, isActive: true, content: "ورود دو مرحله" },
     { id: "7", force: false, isActive: true, content: "نوع کاربر" },
-    { id: "8", force: false, isActive: true, content: "عملیات" },
   ];
 
   const handleDragEnd = (result) => {
@@ -32,40 +26,40 @@ const MainDnd = () => {
       return;
     }
 
-    const newItems = [...items];
+    const newItems = [...columnsOrder];
 
     const [reorderedItem] = newItems.splice(result.source.index, 1);
     newItems.splice(result.destination.index, 0, reorderedItem);
 
-    setItems(newItems);
-
-    console.log(newItems);
+    setColumnsOrder(newItems);
   };
 
   const deleteFromList = (id) => {
-    const getItemsClone = [...items];
+    const getItemsClone = [...columnsOrder];
     const findItem = getItemsClone.find((item) => item.id === id);
 
     if (findItem.force) return;
     findItem.isActive = !findItem.isActive;
 
-    setItems(getItemsClone);
+    setColumnsOrder(getItemsClone);
   };
 
   const resetOrder = () => {
-    setItems(initialOrder);
+    setColumnsOrder(initialOrder);
+    toast.success("ترتیب ستون ها به حالت پیش فرض  بازگشت");
   };
 
   return (
     <div className="flex justify-center flex-col ">
-      
-      <h4 className="text-right font-bold mb-2 text-textColor">ترتیب ستون ها</h4>
+      <h4 className="text-right font-bold mb-2 text-textColor">
+        ترتیب ستون ها
+      </h4>
 
       <DragDropContext onDragEnd={handleDragEnd}>
         <Droppable droppableId="my-list">
           {(provided) => (
             <ul {...provided.droppableProps} ref={provided.innerRef}>
-              {items.map((item, index) => (
+              {columnsOrder.map((item, index) => (
                 <Draggable key={item.id} draggableId={item.id} index={index}>
                   {(provided) => (
                     <div
@@ -103,13 +97,14 @@ const MainDnd = () => {
           )}
         </Droppable>
       </DragDropContext>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center flex-col">
+        <p className="text-mainRed text-xs max-w-[150px] my-3">شما قادر به غیر فعال کردن نام و نام خانوادگی و کد ملی نیستید</p>
+
         <button
           onClick={() => resetOrder()}
-          className="= p-1  text-primary cursor-pointer rounded-lg text-sm flex items-center justify-center gap-x-3 px-4 py-2"
+          className="= p-1  text-primary hover:text-sortText transition-all ease-in-out  duration-150  cursor-pointer rounded-lg text-sm flex items-center justify-center gap-x-3 px-4 py-2"
         >
           پیش فرض
-
           <RestartAltOutlinedIcon />
         </button>
       </div>

@@ -2,7 +2,7 @@ import RowNum from "./rowNum";
 import TableHead from "./tableHead";
 import TableRow from "./TableRow";
 import TableNavBar from "./tableNavbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "@mui/material/Pagination";
 
 // motion
@@ -13,6 +13,7 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import VpnKeyOutlinedIcon from "@mui/icons-material/VpnKeyOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+import { Toaster } from "react-hot-toast";
 
 // loading
 // pagination
@@ -1202,30 +1203,92 @@ const columns = [
   "avatarFileId",
 ];
 const columsObject = {
-  firstName: "تام",
+  firstName: "نام",
   lastName: "خانوادگی",
   nationalCode: "ملی",
   personelCode: "کاربر",
   mobile: "موبایل",
-  status: "وصعیت",
-  twoFactorEnabled: "دو مرخلع",
-  type: "توه",
+  status: "وضعیت",
+  twoFactorEnabled: "تایید دو مرحله ای",
+  type: "نوع",
   userName: "نام کاربری",
   gender: "جنسیت",
-  fatherName: "تام پدر",
+  fatherName: "نام پدر",
   birthDate: "نولد",
   email: "ایمیل",
   userId: "ایدب گاریر",
   signFileId: "فیلد",
   avatarFileId: "آئاتار",
 };
+
 const Table = () => {
+  const numOfRows = [10, 20, 30, 40, 50];
   const [pageIndex, setPageIndex] = useState(1);
+  const [searchValue, setSearchValue] = useState("");
+
+  // set the last user order in LS
+  const columnOrderFromLocalStorage = localStorage.getItem("columnOrder")
+    ? JSON.parse(localStorage.getItem("columnOrder"))
+    : localStorage.setItem(
+        "columnOrder",
+        JSON.stringify([
+          {
+            id: "1",
+            force: true,
+            isActive: true,
+            content: "نام و نام خانوادگی",
+          },
+          { id: "2", force: true, isActive: true, content: "کد ملی" },
+          { id: "3", force: false, isActive: true, content: "کد پرسنلی" },
+          { id: "4", force: false, isActive: true, content: "موبایل" },
+          { id: "5", force: false, isActive: true, content: "وضعیت کاربران" },
+          { id: "6", force: false, isActive: true, content: "ورود دو مرحله" },
+          { id: "7", force: false, isActive: true, content: "نوع کاربر" },
+        ])
+      );
+
+  const [columnsOrder, setColumnsOrder] = useState(columnOrderFromLocalStorage);
+
+  // check LS data and set some defaults
+  let rowNumLocalStorage = localStorage.getItem("rowNum")
+    ? localStorage.getItem("rowNum")
+    : 10;
+
+  // prevent mannual save data to LS
+  if (!numOfRows.includes(+rowNumLocalStorage)) {
+    rowNumLocalStorage = 10;
+    localStorage.setItem("rowNum", rowNumLocalStorage);
+  }
+
+  // page size state
+  const [rowNum, setRowNum] = useState(rowNumLocalStorage);
+
+  useEffect(() => {
+    // console log row num
+    console.log(rowNum);
+  }, [rowNum]);
+
+  useEffect(() => {
+    const avalibleCol = columnsOrder.filter((col) => col.isActive);
+    console.log(avalibleCol);
+  }, [columnsOrder]);
 
   return (
     <>
+      <div>
+        {/* you should put this component at the laylout your app  */}
+        <Toaster  limit={3}/>
+      </div>
       <div className="container max-w-7xl mx-auto">
-        <TableNavBar />
+        <TableNavBar
+          rowNum={rowNum}
+          numOfRows={numOfRows}
+          columnsOrder={columnsOrder}
+          searchValue={searchValue}
+          setRowNum={setRowNum}
+          setColumnsOrder={setColumnsOrder}
+          setSearchValue={setSearchValue}
+        />
 
         <div className="px-3">
           <div className="max-w-7xl mx-auto bg-white rounded-lg overflow-x-auto border border-gray-200 p-5">

@@ -7,14 +7,14 @@ import Table from "./components/table/table";
 import CardComponent from "./components/lazyload/CardComponent";
 import Main from "./components/lazyload/main";
 import LazySelectOption from "./components/lazySelectOption/lazySelectOption";
-import MyList from "./components/dndSort/drag";
+import MyList from "./components/dndSort/MainDnd";
 import Uploader from "./components/fileuploader/uploader";
 import MultiSelectAutocomplete from "./components/autoComplete/MultiSelectAutocomplete";
 import useFetch from "./hook/useFetch";
 import fetchData from "./utils/fetchData";
 
-const App = () => {
 
+const App = () => {
   return (
     <>
       <div dir="rtl">
@@ -26,8 +26,7 @@ const App = () => {
           {/* <Main /> */}
           {/* <LazySelectOption /> */}
           {/* <MultiSelectAutocomplete/> */}
-          {/* <MyList /> */}
-          {/* <MainDnd /> */}
+
 
           <div className="flex justify-center">
             <div className="w-[350px]">{/* <Uploader /> */}</div>

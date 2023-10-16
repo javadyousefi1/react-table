@@ -2,9 +2,10 @@ import { useState } from "react";
 // mui icons
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 
+
+// ! you can delete this component if you use it in table navbar
+
 const SearchInput = () => {
-  // ! prevent if value is null
-  // ! block more search
 
   const [searchValue, setSearchValue] = useState("");
 
