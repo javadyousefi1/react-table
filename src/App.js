@@ -16,11 +16,12 @@ import fetchData from "./utils/fetchData";
 const App = () => {
   return (
     <>
+      // system changed
       <div dir="rtl">
         <div className="bg-[#f4f5f7] h-screen ">
           <br />
 
-            <Table />
+          <Table />
           {/* <FilterInputList /> */}
           {/* <Main /> */}
           {/* <LazySelectOption /> */}
