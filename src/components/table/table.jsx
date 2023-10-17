@@ -1185,24 +1185,24 @@ const dummyData = {
   isSuccess: true,
   message: null,
 };
-const columns = [
-  "firstName",
-  "lastName",
-  "nationalCode",
-  "personelCode",
-  "mobile",
-  "status",
-  "twoFactorEnabled",
-  "type",
-  "userName",
-  "gender",
-  "fatherName",
-  "birthDate",
-  "email",
-  "userId",
-  "signFileId",
-  "avatarFileId",
-];
+// const columns = [
+//   "firstName",
+//   "lastName",
+//   "nationalCode",
+//   "personelCode",
+//   "mobile",
+//   "status",
+//   "twoFactorEnabled",
+//   "type",
+//   "userName",
+//   "gender",
+//   "fatherName",
+//   "birthDate",
+//   "email",
+//   "userId",
+//   "signFileId",
+//   "avatarFileId",
+// ];
 const columsObject = {
   firstName: "نام",
   lastName: "خانوادگی",
@@ -1226,6 +1226,25 @@ const Table = () => {
   const numOfRows = [10, 20, 30, 40, 50];
   const [pageIndex, setPageIndex] = useState(1);
   const [searchValue, setSearchValue] = useState("");
+
+  const [columns, setColumns] = useState([
+    "firstName",
+    "lastName",
+    "nationalCode",
+    "personelCode",
+    "mobile",
+    "status",
+    "twoFactorEnabled",
+    "type",
+    "userName",
+    "gender",
+    "fatherName",
+    "birthDate",
+    "email",
+    "userId",
+    "signFileId",
+    "avatarFileId",
+  ]);
 
   // set the last user order in LS
   const columnOrderFromLocalStorage = localStorage.getItem("columnOrder")
@@ -1270,16 +1289,16 @@ const Table = () => {
   }, [rowNum]);
 
   useEffect(() => {
-    const avalibleCol = columnsOrder.filter((col) => col.isActive);
+    const avalibleCol = columnsOrder && columnsOrder.filter((col) => col.isActive);
     console.log(avalibleCol);
+    // setColumns(avalibleCol)
   }, [columnsOrder]);
 
   return (
     <>
-
       <div>
         {/* you should put this component at the laylout your app  */}
-        <Toaster  limit={3}/>
+        <Toaster limit={3} />
       </div>
       <div className="container max-w-7xl mx-auto">
         <TableNavBar

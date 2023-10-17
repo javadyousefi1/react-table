@@ -111,7 +111,7 @@ const AlertTailwind = ({
               exit={{ opacity: 0 }}
               transition={{
                 type: "spring",
-                stiffness: 500,
+                stiffness: 3000,
                 damping: 50,
               }}
               className=" fixed left-0 right-0 flex justify-center items-center px-2 opacity-100 transition-all duration-150 ease-linear"
@@ -137,9 +137,11 @@ const AlertTailwind = ({
 
                 {/* sign out */}
                 <div className="flex items-center flex-col ">
-                  <b className="text-2xl mb-2">{title}</b>
+                  <b className="text-2xl mb-7">{title}</b>
 
-                  <p className="text-gray-400 text-md">{text}</p>
+                  <p className="text-gray-400 text-md max-w-xs text-justify md:max-w-sm">
+                    {text}
+                  </p>
                 </div>
 
                 {/* button */}

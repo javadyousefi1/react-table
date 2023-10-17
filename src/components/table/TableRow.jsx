@@ -14,6 +14,9 @@ import AlertTailwind from "../alert/alert";
 import ChildrenAlert from "../alert/chlidrenAlert";
 
 const TableRow = ({ userData, rowNum, columns }) => {
+  // const new password state
+  const [newPassword, setNewPassword] = useState();
+
   // table row drop down
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
@@ -54,9 +57,8 @@ const TableRow = ({ userData, rowNum, columns }) => {
     // send request
   };
 
-  const handleChangePasswordUser = () => {
+  const handleChangePasswordUser = (e) => {
     // request to change user password
-
 
     // hide modal :
     setShowChangePassword(false);
@@ -95,15 +97,14 @@ const TableRow = ({ userData, rowNum, columns }) => {
     setShowAlert(true);
   };
 
-  const AlertTwoFactorEnabled = (userId) => {
-    const isUserActiveTwoFactorEnabled = !Boolean(userData.twoFactorEnabled)
-      ? "فعال"
-      : "غیر فعال";
+  const AlertTwoFactorEnabled = () => {
+    const isUserActiveTwoFactorEnabled = userData.twoFactorEnabled
+      ? "غیر فعال"
+      : " فعال";
 
-    console.log(isUserActiveTwoFactorEnabled);
 
     setAlertDetails({
-      title: "آیا مطمئن هستید ؟",
+      title: "تغییر وضعیت کاربر",
       confirmButtonText: "بله",
       text: `آیا از ${isUserActiveTwoFactorEnabled} کردن ${currentUserRowName} مطمئن هستید ؟`,
       secondryButton: "لغو",
@@ -127,36 +128,43 @@ const TableRow = ({ userData, rowNum, columns }) => {
               <span>کد ملی : {userData.nationalCode}</span>
             </div>
 
-            <input
-              type="text"
-              placeholder="رمز عبور"
-              className="focus:shadow-xs mb-2 focus:border-blue-500 bg-[#fff] min-w-[150px]  outline-none p-2 rounded-lg border border-[#ededed] hover:border-primary transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
-            />
+            <form
+              onSubmit={(e) => handleChangePasswordUser(e)}
+              className="flex flex-col"
+            >
+              <input
+                type="text"
+                name="password"
+                placeholder="رمز عبور"
+                className="focus:shadow-xs mb-2 focus:border-blue-500 bg-[#fff] min-w-[150px]  outline-none p-2 rounded-lg border border-[#ededed] hover:border-primary transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
+              />
 
-            <input
-              type="text"
-              placeholder="تکرار رمز عبور"
-              className="focus:shadow-xs focus:border-blue-500 bg-[#fff] min-w-[150px]  outline-none p-2 rounded-lg border border-[#ededed] hover:border-primary transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
-            />
+              <input
+                name="passwordConfirm"
+                type="text"
+                placeholder="تکرار رمز عبور"
+                className="focus:shadow-xs focus:border-blue-500 bg-[#fff] min-w-[150px]  outline-none p-2 rounded-lg border border-[#ededed] hover:border-primary transition-all ease-linear duration-100 cursor-pointer focus:border-mainDarkBlue"
+              />
 
-            <div className="flex gap-x-2">
-              <button
-                onClick={() => setShowChangePassword(false)}
-                className="text-white bg-mainRed hover:bg-mainRed transition-all ease-in-out duration-150 text-sm mt-5  py-2 rounded-lg px-8"
-              >
-                انصراف
-              </button>
-              <button
-                onClick={() => handleChangePasswordUser()}
-                className="text-white bg-primary hover:bg-blue-500 transition-all ease-in-out duration-150 text-sm mt-5  py-2 rounded-lg px-8"
-              >
-                تایید
-              </button>
-            </div>
+              <div className="flex gap-x-2">
+                <button
+                  onClick={() => setShowChangePassword(false)}
+                  className="text-white bg-mainRed hover:bg-mainRed transition-all ease-in-out duration-150 text-sm mt-5  py-2 rounded-lg px-8"
+                >
+                  انصراف
+                </button>
+                <button
+                  type="submit"
+                  className="text-white bg-primary hover:bg-blue-500 transition-all ease-in-out duration-150 text-sm mt-5  py-2 rounded-lg px-8"
+                >
+                  تایید
+                </button>
+              </div>
+            </form>
           </div>
         </ChildrenAlert>
       )}
-      
+
       {showAlert && (
         <AlertTailwind
           showAlert={showAlert}
